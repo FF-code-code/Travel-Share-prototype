@@ -1,0 +1,91 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="search-container">
+        <div class="search-options">
+            <select id="tripType">
+                <option>Round trip</option>
+                <option>One way</option>
+            </select>
+            <select id="passengers">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4+</option>
+            </select>
+            <select id="class">
+                <option>Economy</option>
+                <option>Business</option>
+                <option>First Class</option>
+            </select>
+        </div>
+        <div class="search-inputs">
+            <input type="text" id="from" placeholder="From">
+            <input type="text" id="to" placeholder="Where to?">
+            <input type="text" id="dates" placeholder="1-week trip in the next 6 months">
+        </div>
+        <div class="filters">
+            <button id="allFilters">All filters (1)</button>
+            <div class="active-filter">Flights only <span class="close">×</span></div>
+            <select id="stops">
+                <option>Stops</option>
+            </select>
+            <select id="price">
+                <option>Price</option>
+            </select>
+            <select id="airlines">
+                <option>Airlines</option>
+            </select>
+            <select id="duration">
+                <option>Duration</option>
+            </select>
+            <select id="bags">
+                <option>Bags</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="album-container">
+        <div class="album">
+            <img src="https://via.placeholder.com/300x200" alt="Destination 1">
+            <h3>Paris Adventure</h3>
+            <p>Duration: 7 days</p>
+        </div>
+        <div class="album">
+            <img src="https://via.placeholder.com/300x200" alt="Destination 2">
+            <h3>Tokyo Explorer</h3>
+            <p>Duration: 10 days</p>
+        </div>
+        <div class="album">
+            <img src="https://via.placeholder.com/300x200" alt="Destination 3">
+            <h3>New York City Trip</h3>
+            <p>Duration: 5 days</p>
+        </div>
+    </div>
+
+    <div id="filterModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Filters</h2>
+            <h3>Stops</h3>
+            <label><input type="radio" name="stops" value="any" checked> Any number of stops</label>
+            <label><input type="radio" name="stops" value="nonstop"> Nonstop only</label>
+            <label><input type="radio" name="stops" value="1stop"> 1 stop or fewer</label>
+            <label><input type="radio" name="stops" value="2stops"> 2 stops or fewer</label>
+            
+            <h3>Travel mode</h3>
+            <label><input type="radio" name="mode" value="all"> All</label>
+            <label><input type="radio" name="mode" value="flights" checked> Flights only</label>
+            
+            <button id="clearAll">Clear all</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

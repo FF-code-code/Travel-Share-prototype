@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Planner - Community</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+  <div class="background"></div>
+  <header>
+      <div class="headercontainer">
+          <nav>
+              <div class="logo"><a href="index.html">TravelShare</a></div>
+              <input type="text" class="search-bar" placeholder="Search...">
+              <div class="nav-links">
+                  <a href="Community.html" class="community-btn">Community</a>
+                  <a href="index.html#About Us">About Us</a>
+                  <a href="index.html#FAQ">FAQ</a>
+                  <a href="#">EN</a>
+                  <a href="login.html">Log In</a>
+                  <a href="sign.html">Sign Up</a>
+                  
+              </div>
+          </nav>
+      </div>
+  </header>
+
+      <div class="logo">
+        <a href="Community.html">
+        <h1>Community</h1>
+        </a>
+      </div>
+     
+    <!-- Title and Filter Bar Section -->
+    <div class="filter-bar">
+        
+        <div class="container search-container">
+            <!-- Travel Place Options -->
+            <div class="filter-section">
+                <label for="place">Travel Place</label>
+                <select id="place" aria-label="Travel Place">
+                    <option value="">  </option> <!-- Empty option -->
+                    <option value="asia">Asia</option>
+                    <option value="europe">Europe</option>
+                    <option value="africa">Africa</option>
+                    <option value="north-america">North America</option>
+                    <option value="south-america">South America</option>
+                    <option value="australia">Australia</option>
+                </select>
+            </div>
+
+            <!-- Travel With Options -->
+            <div class="filter-section">
+                <label for="travelWith">Travel With</label>
+                <select id="travelWith" aria-label="Travel With">
+                    <option value="">  </option> <!-- Empty option -->
+                    <option value="family">Family</option>
+                    <option value="single">Single Trip</option>
+                    <option value="friends">Friends</option>
+                    <option value="group">Group</option>
+                </select>
+            </div>
+
+            <!-- Duration Options -->
+            <div class="filter-section">
+                <label for="duration">Duration</label>
+                <select id="duration" aria-label="Duration">
+                    <option value="">  </option> <!-- Empty option -->
+                    <option value="1-2">1-2 Days</option>
+                    <option value="3-4">3-4 Days</option>
+                    <option value="5-7">5-7 Days</option>
+                    <option value="8-10">8-10 Days</option>
+                    <option value="10+">10+ Days</option>
+                </select>
+            </div>
+
+            <!-- Travel Type Options -->
+            <div class="filter-section">
+                <label for="travelType">Travel Type</label>
+                <select id="travelType" aria-label="Travel Type">
+                    <option value="">  </option> <!-- Empty option -->
+                    <option value="historical">Historical</option>
+                    <option value="food">Food</option>
+                    <option value="festival">Festival</option>
+                    <option value="countryside">Countryside</option>
+                    <option value="adventure">Adventure</option>
+                </select>
+            </div>
+
+            <!-- Transportation Options -->
+            <div class="filter-section">
+                <label for="transport">Transportation</label>
+                <select id="transport" aria-label="Transportation">
+                    <option value="">  </option> <!-- Empty option -->
+                    <option value="airplane">Airplane</option>
+                    <option value="cruise">Cruise</option>
+                    <option value="car">Car</option>
+                </select>
+            </div>
+
+            <!-- Search Button -->
+            <div class="filter-section search-button">
+                <button id="searchButton">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trip Posts Section (Horizontal Scroll) -->
+     
+    <div class="container" id="trip-container">
+        <h2>Available Trips</h2>
+        <div class="trip-posts scroll-container" id="trip-posts">
+            <div class="trip-post" data-place="europe" data-travelwith="family" data-duration="5-7" data-type="historical" data-transport="airplane">
+                <img src="paris.jpg" alt="Trip to Paris">
+                <h3>Paris - Europe</h3>
+                <p>Travel with: Family</p>
+                <p>Duration: 5-7 Days</p>
+                <p>Type: Historical</p>
+                <p>Transport: Airplane</p>
+            </div>
+            <div class="trip-post" data-place="asia" data-travelwith="single" data-duration="8-10" data-type="food" data-transport="airplane">
+                <img src="tokyo.jpg" alt="Trip to Tokyo">
+                <h3>Tokyo - Asia</h3>
+                <p>Travel with: Single Trip</p>
+                <p>Duration: 8-10 Days</p>
+                <p>Type: Food</p>
+                <p>Transport: Airplane</p>
+            </div>
+            <div class="trip-post" data-place="australia" data-travelwith="friends" data-duration="3-4" data-type="festival" data-transport="cruise">
+                <img src="sydney.jpg" alt="Trip to Sydney">
+                <h3>Sydney - Australia</h3>
+                <p>Travel with: Friends</p>
+                <p>Duration: 3-4 Days</p>
+                <p>Type: Festival</p>
+                <p>Transport: Cruise</p>
+            </div>
+            <div class="trip-post" data-place="europe" data-travelwith="group" data-duration="5-7" data-type="countryside" data-transport="train">
+                <img src="rome.jpg" alt="Trip to Rome">
+                <h3>Rome - Europe</h3>
+                <p>Travel with: Group</p>
+                <p>Duration: 5-7 Days</p>
+                <p>Type: Countryside</p>
+                <p>Transport: Train</p>
+            </div>
+            <div class="trip-post" data-place="africa" data-travelwith="family" data-duration="10+" data-type="adventure" data-transport="car">
+                <img src="cairo.jpg" alt="Trip to Cairo">
+                <h3>Cairo - Africa</h3>
+                <p>Travel with: Family</p>
+                <p>Duration: 10+ Days</p>
+                <p>Type: Adventure</p>
+                <p>Transport: Car</p>
+            </div>
+        </div>
+    </div>
+
+    <section id="Popular Travel Stories">
+    <!-- Popular Travel Stories Section -->
+    <div class="container popular-stories-section" id="popular-stories">
+        <h2>Popular Travel Stories</h2>
+        <div class="story-filter">
+            <button class="filter-button" data-location="new-york">New York</button>
+            <button class="filter-button" data-location="tokyo">Tokyo</button>
+            <button class="filter-button" data-location="singapore">Singapore</button>
+            <button class="filter-button" data-location="paris">Paris</button>
+        </div>
+        <div class="popular-stories scroll-container" id="popular-stories-posts">
+            <div class="story-post" data-location="new-york">
+                <img src="ny.jpg" alt="New York Story">
+                <h3>New York: A Journey Through the Big Apple</h3>
+                <button>Read More</button>
+            </div>
+            <div class="story-post" data-location="tokyo">
+                <img src="tokyo.jpg" alt="Tokyo Story">
+                <h3>Tokyo: A City of Contrasts</h3>
+                <button>Read More</button>
+            </div>
+            <div class="story-post" data-location="singapore">
+                <img src="singapore.jpg" alt="Singapore Story">
+                <h3>Singapore: From Skyscrapers to Gardens</h3>
+                <button>Read More</button>
+            </div>
+            <div class="story-post" data-location="paris">
+                <img src="paris.jpg" alt="Paris Story">
+                <h3>Paris: Romance in the Air</h3>
+                <button>Read More</button>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-icon">
+                <span class="icon">TS</span>
+            </div>
+            <div class="footer-copyright">
+                <p>© 2024 Travel Share Company, Inc</p>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-link"><img src="twitter-icon.png" alt="Twitter"></a>
+                <a href="#" class="social-link"><img src="instagram-icon.png" alt="Instagram"></a>
+                <a href="#" class="social-link"><img src="facebook-icon.png" alt="Facebook"></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript to handle filtering -->
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const place = document.getElementById('place').value;
+            const travelWith = document.getElementById('travelWith').value;
+            const duration = document.getElementById('duration').value;
+            const travelType = document.getElementById('travelType').value;
+            const transport = document.getElementById('transport').value;
+
+            const tripPosts = document.querySelectorAll('.trip-post');
+
+            // Hide "Popular Travel Stories" section and filter buttons
+            document.getElementById('popular-stories').style.display = 'none';
+
+            tripPosts.forEach(post => {
+                const postPlace = post.getAttribute('data-place');
+                const postTravelWith = post.getAttribute('data-travelwith');
+                const postDuration = post.getAttribute('data-duration');
+                const postType = post.getAttribute('data-type');
+                const postTransport = post.getAttribute('data-transport');
+
+                // Show post only if it matches selected filters or the filter is empty
+                if ((place === "" || postPlace === place) &&
+                    (travelWith === "" || postTravelWith === travelWith) &&
+                    (duration === "" || postDuration === duration) &&
+                    (travelType === "" || postType === travelType) &&
+                    (transport === "" || postTransport === transport)) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        });
+
+        // Function to filter popular stories
+        const filterButtons = document.querySelectorAll('.filter-button');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const location = this.getAttribute('data-location');
+                const storyPosts = document.querySelectorAll('.story-post');
+
+                // Don't do it Hide trip posts and show only popular stories
+                //document.getElementById('trip-container').style.display = 'none';
+                //document.getElementById('popular-stories').style.display = 'block';
+
+                storyPosts.forEach(post => {
+                    if (post.getAttribute('data-location') === location) {
+                        post.style.display = 'block';
+                    } else {
+                        post.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

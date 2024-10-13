@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Travel Plan</title>
+    <link rel="stylesheet" href="style3.css">
+    
+</head>
+<body>
+    <div class="background"></div>
+    <header>
+        <div class="headercontainer">
+            <nav>
+                <div class="logo"><a href="index.html">TravelShare</a></div>
+                <input type="text" class="search-bar" placeholder="Search...">
+                <div class="nav-links">
+                    <a href="Community.html" class="community-btn">Community</a>
+                    <a href="index.html#About Us">About Us</a>
+                    <a href="index.html#FAQ">FAQ</a>
+                    <a href="#">EN</a>
+                    <a href="login.html">Log In</a>
+                    <a href="sign.html">Sign Up</a>
+                    
+                </div>
+            </nav>
+        </div>
+    </header>
+
+<p></p>
+<div class="container">
+    <h1>Edit Travel Plan</h1>
+    <h4> Remember click "Save Changes before leave this page</h4>
+
+    <!-- Image upload input -->
+    <div class="form-group">
+        <label for="photo">Photo </label>
+        <label for="photo">(1 photo for 1 post only)</label>
+        <input type="file" id="photo" accept="image/*" onchange="previewImage(event)">
+        <!-- Image preview -->
+        <img id="photo-preview" style="max-width: 200px; display: none;" />
+    </div>
+
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" ondblclick="makeEditable(this)">
+    </div>
+
+    <div class="form-group">
+        <label for="destination">Destination</label>
+        <input type="text" id="destination" ondblclick="makeEditable(this)">
+    </div>
+
+    <div class="form-group">
+        <label for="travelWith">Travel with</label>
+        <input type="text" id="travelWith" ondblclick="makeEditable(this)">
+    </div>
+    
+    <div class="form-group">
+        <label for="start-date">Start Date:</label>
+        <input type="date" id="start-date">
+    </div>
+
+    <div class="form-group">
+        <label for="duration">Duration (in days)</label>
+        <input type="number" id="duration" min="1" oninput="generateItinerary(this.value)" ondblclick="makeEditable(this)">
+    </div>
+
+    <div class="form-group">
+        <label for="type">Type of Trip</label>
+        <input type="text" id="type" ondblclick="makeEditable(this)">
+    </div>
+
+    <div class="form-group">
+        <label for="transport">Transport</label>
+        <input type="text" id="transport" ondblclick="makeEditable(this)">
+    </div>
+
+    <div class="form-group">
+        <label for="notes">Notes</label>
+        <textarea id="notes" rows="4" ondblclick="makeEditable(this)"></textarea>
+    </div>
+
+    <div class="itinerary-template" id="itinerary-template-container">
+        <h3>Itinerary</h3>
+        <div class="day-header">
+            <div class="day-row">
+                <div><strong>Date</strong></div>
+                <div><strong>Time</strong></div>
+                <div><strong>Activity</strong></div>
+                <div><strong>Location</strong></div>
+                <div><strong>Transport</strong></div>
+                <div><strong>Hotel</strong></div>
+                <div><strong>Memories</strong></div>
+                <div><strong>Notes</strong></div>
+            </div>
+        </div>
+    </div>
+
+
+    <button onclick="savePost()">Save Changes</button>
+    <button onclick="window.location.href='posts.html'">Back to Account Page</button>
+</div>
+
+<script>
+    let postId;
+    let photoBase64 = ''; // To store the Base64 string for the photo
+    let itineraryDays = [];
+
+        // Load the post data from localStorage
+        function loadPost() {
+            const urlParams = new URLSearchParams(window.location.search);
+            postId = urlParams.get('postId'); // Get postId from URL query parameter
+            const post = JSON.parse(localStorage.getItem(postId));
+
+            // Populate form fields with the existing post data
+            document.getElementById('title').value = post.title;
+            document.getElementById('destination').value = post.destination;
+            document.getElementById('travelWith').value = post.travelWith;
+            document.getElementById('start-date').value = post.startDate;
+            document.getElementById('duration').value = post.duration;
+            document.getElementById('type').value = post.type;
+            document.getElementById('transport').value = post.transport;
+            document.getElementById('notes').value = post.notes;
+
+            // If a photo was previously uploaded, display it in the preview
+            if (post.photo) {
+                photoBase64 = post.photo; // Load Base64 string into variable
+                const photoPreview = document.getElementById('photo-preview');
+                photoPreview.src = post.photo;
+                photoPreview.style.display = 'block'; // Show the image preview
+            }
+
+            // Load the itinerary if applicable (if you have one)
+            itineraryDays = post.itinerary || [];
+            generateItinerary(post.duration);
+        }
+
+        // Convert the uploaded image to Base64 and display preview
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function() {
+                photoBase64 = reader.result; // Base64 string
+                document.getElementById('photo-preview').src = photoBase64;
+                document.getElementById('photo-preview').style.display = 'block';
+            };
+            reader.readAsDataURL(file); // Convert file to Base64
+        }
+
+        function makeEditable(element) {
+            // Make the element editable by setting contentEditable to true
+            element.contentEditable = true;
+            element.focus(); // Automatically focus the element for editing
+
+            // When the element loses focus, disable editing
+            element.onblur = function() {
+                element.contentEditable = false;
+            };
+        }
+
+        // Save changes to the post in localStorage
+        function savePost() {
+            // Collect updated data
+            const updatedPost = {
+                title: document.getElementById('title').value,
+                destination: document.getElementById('destination').value,
+                travelWith: document.getElementById('travelWith').value,
+                startDate: document.getElementById('start-date').value,
+                duration: parseInt(document.getElementById('duration').value, 10),
+                type: document.getElementById('type').value,
+                transport: document.getElementById('transport').value,
+                notes: document.getElementById('notes').value,
+                photo: photoBase64 // Store the Base64 encoded image
+            };
+
+            // Save updated post data to localStorage
+            localStorage.setItem(postId, JSON.stringify(updatedPost));
+
+            // Redirect to posts.html
+            window.location.href = 'posts.html';
+        }
+
+
+
+    
+
+    // Function to generate itinerary based on the number of days
+    function generateItinerary(numDays) {
+        const container = document.getElementById('itinerary-template-container');
+        container.innerHTML = `
+            <h3>Itinerary</h3>
+            <div class="day-header">
+                <div class="day-row">
+                    <div><strong>Date</strong></div>
+                    <div><strong>Time</strong></div>
+                    <div><strong>Activity</strong></div>
+                    <div><strong>Location</strong></div>
+                    <div><strong>Transport</strong></div>
+                    <div><strong>Hotel</strong></div>
+                    <div><strong>Memories</strong></div>
+                    <div><strong>Notes</strong></div>
+                </div>
+            </div>`;
+        
+        // Get the start date from the input field
+        const startDate = new Date(document.getElementById('start-date').value);   
+        
+    // Loop through the number of days
+        for (let i = 1; i <= numDays; i++) {
+            const dayData = itineraryDays[i - 1] || {}; // Use stored data if available
+            // Create a new date by adding (i - 1) days to the start date
+            const currentDate = new Date(startDate);
+            currentDate.setDate(startDate.getDate() + (i - 1));
+
+            // Format the date to a readable string, e.g., "Mon Oct 07 2024"
+            const dateString = currentDate.toDateString(); 
+
+            const dayDiv = document.createElement('div');
+            dayDiv.className = 'day-row';
+            dayDiv.innerHTML = `
+                <div>Day ${i} (${dateString})</div>
+                <div ondblclick="makeEditable(this)">${dayData.time || ''}</div>
+                <div ondblclick="makeEditable(this)">${dayData.activity || ''}</div>
+                <div ondblclick="makeEditable(this)">${dayData.location || ''}</div>
+                <div ondblclick="makeEditable(this)">${dayData.transport || ''}</div>
+                <div ondblclick="makeEditable(this)">${dayData.hotel || ''}</div>
+                <div><input type="file" accept="image/*,video/*"></div>
+                <div ondblclick="makeEditable(this)">${dayData.notes || ''}</div>
+            `;
+            container.appendChild(dayDiv);
+        }
+    }
+
+    // Function to extract itinerary data from the DOM
+    function getItineraryData() {
+        const rows = document.querySelectorAll('.day-row');
+        const itineraryData = [];
+        rows.forEach((row, index) => {
+            if (index === 0) return; // Skip header row
+            const dayData = {
+                time: row.children[1].innerText,
+                activity: row.children[2].innerText,
+                location: row.children[3].innerText,
+                transport: row.children[4].innerText,
+                hotel: row.children[5].innerText,
+                notes: row.children[7].innerText,
+            };
+            itineraryData.push(dayData);
+        });
+        return itineraryData;
+    }
+
+
+
+    // Automatically load the post when the page loads
+    window.onload = loadPost;
+</script>
+
+
+</body>
+</html>

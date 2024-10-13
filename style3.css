@@ -1,0 +1,282 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+  }
+  
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(45deg, #87CEEB, #E0F6FF);
+}
+
+.headercontainer {
+    width: 90%;
+    margin: 20px auto;
+}
+  
+  h1 {
+    margin-top: 2rem;
+    color: #333;
+  }
+  
+  /* Header Styles */
+  header {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+.logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .search-bar {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 50%;
+  }
+  
+  .nav-links a {
+    margin-left: 1rem;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .nav-links a:hover {
+    color: #0077be;
+  }
+
+.search-bar:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0,119,190,0.5);
+}
+
+/*album style*/
+
+.album-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.album {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 10px;
+    min-width: 300px;
+}
+
+.album img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+
+/*posts, originall*/
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    padding: 20px 0;
+    gap: 20px;
+}
+
+.scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+.trip-post {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+    min-width: 300px;
+    flex-shrink: 0;
+}
+
+.trip-post img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.trip-post h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.trip-post p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.delete-button,
+.edit-button {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.edit-button {
+    background-color: #4CAF50;
+}
+
+.edit-button:hover {
+    background-color: #388E3C;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f;
+}
+
+.create-button {
+    background-color: #2196F3;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.create-button:hover {
+    background-color: #1976D2;
+}
+
+
+
+/*edit-post style*/
+
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input, select, textarea {
+    width: 95%; /* Reduced width for better alignment */
+    padding: 8px; /* Reduced padding */
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.itinerary-template {
+    margin-top: 20px;
+}
+
+.day-row {
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr 1fr 1fr 1fr 1fr 1.5fr; /* Layout for the columns */
+    margin-bottom: 10px; /* Added space below each row */
+    padding: 10px;
+    border: 1px solid #ffffff71;
+    border-radius: 5px;
+    background-color: #aeccd92e;
+    column-gap: 17px; /* Adds space between the columns */
+}
+
+.day-title {
+    font-weight: bold;
+    grid-column: span 7; /* Make the title span across all columns */
+    margin-bottom: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+/*post-create orignally style*/
+
+/* input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+} */
+
+/*album style*/
+.albumContainer {
+    display: grid;
+    /* Set a smaller minimum size for the grid items to fit more in a row */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Fewer length, adjusted to 200px */
+    gap: 1rem; /* Space between items */
+}
+
+.album {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center the content */
+    max-width: 250px; /* Set a smaller max-width to reduce the size of each album */
+    flex-shrink: 0; /* Prevent the item from shrinking */
+}
+
+.album img {
+    border-radius: 8px;
+    max-width: 100%; /* Ensure the image takes up the full width of the album */
+    height: auto;
+}
+
